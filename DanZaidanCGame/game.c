@@ -15,7 +15,7 @@ static void simulateGame(Input *input, float dt) {
 		ballSizeHalf = (v2){1, 1};
 		playerPos.y = -40;
 		playerSizeHalf = (v2){20, 1};
-		arenaSizeHalf = (v2){80, 50};
+		arenaSizeHalf = (v2){80, 45};
 	}
 	
 	//float speed = 100;
