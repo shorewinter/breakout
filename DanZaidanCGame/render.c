@@ -1,3 +1,5 @@
+static float scale = 0.01f;
+
 static void clearScreen(uint32_t color) {
 	uint32_t *pixel = renderBuffer.pixels;
 	for(int y = 0; y < renderBuffer.height; ++y) {
@@ -21,13 +23,30 @@ static void rectangle(int x1, int y1, int x2, int y2, uint32_t color) {
 	}	
 }
 
-static void drawRect(v2 p, v2 half_size, uint32_t color) {
-	float scale = 0.01f;
-	// aspect ratio idependent
-	float aspectRatio = (float) renderBuffer.height;
-	if ((float)renderBuffer.width / (float)renderBuffer.height < 1.77f) {
+// aspect ratio idependent
+static float calculateAspectRatio() {
+	float aspectRatio = (float)renderBuffer.height;
+	if((float)renderBuffer.width / (float)renderBuffer.height < 1.77f) {
 		aspectRatio = (float)(renderBuffer.width / 1.77f);
 	}
+	return aspectRatio;
+}
+
+static v2 pixelsToWorld(v2i pixelsCoord) {
+	float aspectRatio = calculateAspectRatio();
+	v2 result;
+	result.x = (float)pixelsCoord.x - (float)renderBuffer.width * 0.5;
+	result.y = (float)pixelsCoord.y - (float)renderBuffer.height * 0.5;
+	result.x /= aspectRatio;
+	result.x /= scale;
+	result.y /= aspectRatio;
+	result.y /= scale;
+	return result;
+}
+
+static void drawRect(v2 p, v2 half_size, uint32_t color) {
+	float aspectRatio = calculateAspectRatio();
+	
 	half_size.x *= (float)aspectRatio * scale;
 	half_size.y *= (float)aspectRatio * scale;
 	p.x *= aspectRatio * scale;

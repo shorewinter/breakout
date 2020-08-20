@@ -19,11 +19,12 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="collision.c" />
     <ClInclude Include="dt_time.h" />
-    <ClInclude Include="game.h" />
+    <ClInclude Include="game.c" />
     <ClInclude Include="math.h" />
     <ClInclude Include="platformCommon.h" />
-    <ClInclude Include="renderer.h" />
+    <ClInclude Include="render.c" />
     <ClInclude Include="utils.h" />
   </ItemGroup>
   <ItemGroup>

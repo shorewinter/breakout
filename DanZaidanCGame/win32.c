@@ -3,8 +3,10 @@
 #include "utils.h"
 #include "math.h"
 #include "platformCommon.h"
-#include "renderer.h"
-#include "game.h"
+
+#include "render.c"
+#include "game.c"
+#include "collision.c"
 
 static LRESULT WndProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam) {
 	LRESULT result = 0;
@@ -91,7 +93,7 @@ int WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int n
 		GetCursorPos(&mouse);
 		ScreenToClient(hwnd, &mouse);
 		input.mouse.x = mouse.x;
-		input.mouse.y = mouse.y;
+		input.mouse.y = renderBuffer.height-mouse.y;
 
 		simulateGame(&input, lastdt);
 		StretchDIBits(hdc, 0, 0, renderBuffer.width, renderBuffer.height, 0, 0, renderBuffer.width, renderBuffer.height, renderBuffer.pixels, &renderBuffer.bitmapInfo, DIB_RGB_COLORS, SRCCOPY);

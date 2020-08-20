@@ -18,19 +18,22 @@
     <ClInclude Include="dt_time.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="game.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
     <ClInclude Include="math.h">
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="platformCommon.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="renderer.h">
+    <ClInclude Include="utils.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="utils.h">
+    <ClInclude Include="game.c">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="collision.c">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="render.c">
       <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>
